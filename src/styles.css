@@ -1,2 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('./assets/css/main.css');/*we added here for our tempalete downloaded from @link{ https://html5up.net/directive }*/
+
+.nav {
+  vertical-align: middle;
+}

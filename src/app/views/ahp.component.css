@@ -126,3 +126,15 @@ Boiler List css
   text-align: center;
   font-size: 1.5em;
 }
+
+.button {
+  background: #ffffff;
+  color: #544d55;
+}
+
+.colored {
+  min-width: 6em;
+  color: #4eb980;
+  background: transparent;
+  border-radius: 0;
+}
