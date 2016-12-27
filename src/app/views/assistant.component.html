@@ -1,0 +1,47 @@
+<div id="main">
+  <header class="major container 75%">
+    <h2>Benefits of boiler
+    <br />maintenance and servicing</h2>
+    <p>Spending money on a boiler that’s never given you any trouble may seem like an unnecessary expense.</p>
+  </header>
+
+  <div class="box alt container">
+    <section class="feature left">
+      <a href="#" class="image icon fa-shield"><img src="images/bg01.jpg" class="showcase" alt="" /></a>
+      <div class="content">
+        <h4>Service for Safety</h4>
+        <p>Carbon monoxide is odourless, colourless and tasteless, a silent killer which claims the life of around one person a week in the UK and makes up to 200 a year seriously ill.</p>
+      </div>
+    </section>
+    <section class="feature right">
+      <a href="#" class="image icon fa-check"><img src="images/bg02.jpg" class="showcase" alt="" /></a>
+      <div class="content">
+        <h4>Service for Comfort</h4>          
+        <p>We’ve all had that thought, when it’s freezing outside and we’re peering out at the snow, wondering what it would be like if, for some unforeseen reason, the boiler broke down.</p>
+      </div>
+    </section>
+    <section class="feature left">
+      <a href="#" class="image icon fa-thumbs-up"><img src="images/bg03.jpg" class="showcase" alt="" /></a>
+      <div class="content">
+        <h4>Service for Efficiency</h4>
+        <p>A serviced boiler makes for a more energy-efficient boiler. Engineers will inspect the boiler for faults with operating pressures and parts, ensuring there’s nothing preventing your boiler from operating at maximum efficiency.</p>
+      </div>
+    </section>
+  </div>
+
+  <footer class="major container 75%">
+    <h3 *ngIf="title">{{ title }}</h3>
+    <p *ngIf="description">{{ description }}</p>
+    <div class="row">
+      <div class="8u 12u(mobilep)">
+        <input type="text" placeholder="Enter area of your house" [(ngModel)]="square" name="square"/>
+      </div>
+      <div class="4u 12u(mobilep)">
+        <ul class="actions">
+          <!-- todo use routers -->
+          <li><a routerLink="/ahp/{{ square }}" class="button {{ square ? 'enabled' : 'disabled' }}">Get Started</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</div>

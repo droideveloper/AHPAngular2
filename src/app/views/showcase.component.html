@@ -1,0 +1,32 @@
+<div id="footer">
+  
+  <header class="major container 75%">
+    <h2 *ngIf="title">{{ title }}</h2>
+    <p *ngIf="description">{{ description }}</p>
+  </header>
+
+  <div class="box alt container">
+    
+    <section class="feature left" *ngFor="let pair of data">
+      <div class="image boxed" *ngIf="pair.first">
+        <img class="aspect" src="{{ pair.first.image }}" alt="" />
+      </div>
+      
+      <div class="image boxed" *ngIf="pair.second">
+        <img class="aspect" src="{{ pair.second.image }}" alt="" />
+      </div>
+
+       <div class="image boxed" *ngIf="pair.third">
+        <img class="aspect" src="{{ pair.third.image }}" alt="" />
+      </div>
+    </section> 
+
+    <div class="row">
+      <div class="12u 12u(mobilep) right">
+        <ul class="actions">
+          <li><a routerLink="/database" class="button">More</a></li>
+        </ul>
+      </div>
+    </div>  
+  </div>
+</div>

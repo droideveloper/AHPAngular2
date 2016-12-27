@@ -1,0 +1,105 @@
+<div class="row header">
+  <a routerLink="/"><span class="label"><i class="icon fa-home fa-2x"></i>&nbsp;Home</span></a>
+  <div class="10u 12u(mobilep)">
+    <p class="well">{{ contentTitle }}</p>           
+  </div>
+</div>
+<div class="box container">
+  <div class="row" *ngIf="isSelectState()">
+    <div *ngIf="dataSet" class="12u 12u(mobilep)">    
+      <div *ngFor="let boiler of dataSet" class="boiler {{ isSelected(boiler) ? 'selected': '' }}" (click)="notifyChangeSelection(boiler)">
+        <div class="visual">
+          <img class="image" src="{{ boiler.image }}" alt="" /> 
+        </div>
+        <div class="content">
+          <span>{{ boiler.brand }}</span> <small>{{ boiler.model }}</small>
+          <br />
+          <span style="font-style:italic; font-size:0.8em;">{{ boiler.type }}</span>
+          <br />
+          <div class="left">
+            <span>Power:</span> <span>{{ boiler.power }} kWh</span>
+          </div>
+          <div class="right">
+            <span style="font-style:bold">Max-Area:</span> <span>{{ boiler.area }} m<sup>2</sup></span>
+          </div>
+          <br />
+          <div class="left">
+            <span style="font-style:bold">Size:</span> <span>{{ boiler.dimension.height }}x{{ boiler.dimension.width }}x{{ boiler.dimension.depth }} cm</span>
+          </div>
+          <div class="right">
+            <span style="font-style:bold">Warranty:</span> <span>{{ boiler.warranty }} years</span>
+          </div>
+          <br />
+          <span style="font-style:bold">Price:</span> <span>{{ boiler.price }} &#8378;</span>
+        </div>
+        <i *ngIf="isSelected(boiler)" class="fa fa-check-circle fa-2x selection"></i>
+      </div>
+    </div>
+    <!-- if we do not have data anyhow we fail we ignore it -->
+    <div *ngIf="!dataSet" class="12u 12u(mobilep)">
+      <p class="well">Sorry there is nothing to show!!!</p>
+    </div>  
+  </div>
+  <div class="table-wrapper" *ngIf="isVectorState()">
+    <table class="default">
+      <thead>
+        <tr>
+          <th></th>
+          <th *ngFor="let title of titles">{{ title }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let title of titles; let i = index;">
+          <th scope="row">{{ title }}</th>
+          <td *ngFor="let entry of toEntries(i);">
+            <select *ngIf="entry.y < entry.x" [(ngModel)]="entry.factor" on-change="updateReverseEntry(entry.x, entry.y)" on-blur="lose(entry.x, entry.y)" on-focus="gain(entry.x, entry.y)">
+              <option *ngFor="let v of values" value="{{ v.value }}">{{ toText(title, titles[entry.x], v.value) }}</option>
+            </select>
+            <label *ngIf="entry.y >= entry.x">{{ entry.factor | toDecimal:3 }}</label>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="table-wrapper" *ngIf="isResultState()">
+    <table class="default">
+      <tbody>
+        <tr *ngFor="let result of set;">
+          <td><img class="thumbnail" src="{{ result.boiler.image }}" alt="" /></td>
+          <td>{{ result.boiler.brand + '-' + result.boiler.model }}</td>
+          <td>{{ result.percentage | toPercent:2 }}</td>
+          <td>{{ result.boiler.power }}kWh</td>
+          <td>{{ result.boiler.dimension.height }}x{{ result.boiler.dimension.width }}x{{ result.boiler.dimension.depth }}cm</td>
+          <td>{{ result.boiler.warranty }}years</td>
+          <td>{{ result.boiler.price }}&#8378;</td>
+        </tr>  
+      </tbody>
+    </table>
+  </div>
+  <div class="row" *ngIf="isStyleMatrix()">
+    <div class="item" *ngIf="first">
+      <h5>{{ first.brand + '-' + first.model }}</h5>
+      <img src="{{ first.image }}" class="thumbnail" />
+    </div>
+    <div class="item" *ngIf="second">
+      <h5>{{ second.brand + '-' + second.model }}</h5>
+      <img src="{{ second.image }}" class="thumbnail" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="12u 12u(mobilep)">
+      <ul class="actions">
+        <li *ngIf="stage.index < stage.end"><button class="button" (click)="toNext()">{{ (stage.index < (stage.end - 1)) ? 'Next' : 'Finalize' }}</button></li>
+        <li><button class="button" (click)="toReset()">Reset</button></li>
+        <li *ngIf="stage.index > stage.start"><button class="button" (click)="toBack()">Back</button></li>
+      </ul>
+    </div>
+  </div>  
+</div>
+<div id="footer">
+  <div class="container 75%">
+    <ul class="copyright">
+      <li>&copy; Boilers. All rights reserved.</li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+.transparent {
+  border-top: none 0 #000000 !important;
+}
+
+.image {
+  width: 75%;
+  height: auto;
+}
+
+.boiler {
+  padding: 1%;
+  width:48%;
+  height: auto;
+  float: left;
+  position: relative;
+  border: 1px solid #f5f5f5;
+  min-height: 240px;
+  margin: 1%;
+}
+
+.visual {
+  width: 40%;
+  height: auto;
+  float: left;
+  position: relative;
+  margin-top: 5%;
+}
+
+.filters {
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+.visual > img {
+  min-height: 100%;
+}
+
+.content {
+  width: 60%;
+  margin-top: 5%;
+  height: auto;
+  float: left;
+  position: relative;
+}
+
+.left {
+  width: auto;
+  float: left;
+}
+
+.right {
+  width: auto;
+  float: right;
+}
+
+.header {
+  min-height: 96px;
+  border-bottom: 2px solid #f5f5f5;
+}
+
+.well {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.header > a {
+  margin-left: 15px;
+  margin-top: 15px;
+  border-bottom: none;
+}
+
+/**
+  We override template css
+*/
+#footer {
+  margin-top:0px;
+}
+
+.content-container {
+  width: 80%;
+}
+
+.colored {
+  min-width: 6em;
+  color: #4eb980;
+  background: #ffffff;
+  border-radius: 0;
+}
